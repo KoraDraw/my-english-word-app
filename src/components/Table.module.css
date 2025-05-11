@@ -1,0 +1,45 @@
+/* Table.module.css */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.headerRow {
+  background-color: #ffccff;
+  color: #6a0dad;
+}
+
+.headerRow th {
+  padding: 12px;
+  text-align: left;
+}
+
+tbody tr {
+  background-color: #ffe6f2;
+}
+
+tbody tr:hover {
+  background-color: #ffb3d9;
+}
+
+tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #ff99cc;
+}
+
+.actionButton {
+  background-color: #ff66b2;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.actionButton:hover {
+  background-color: #ff3385;
+}
