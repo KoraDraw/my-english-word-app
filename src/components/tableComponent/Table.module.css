@@ -1,5 +1,3 @@
-/* Table.module.css */
-
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -32,9 +30,10 @@ tbody td {
 }
 
 .actionButton {
-  background-color: #ff66b2;
+  background-color: #ffffff;
   color: white;
   border: none;
+
   padding: 8px 12px;
   border-radius: 5px;
   cursor: pointer;

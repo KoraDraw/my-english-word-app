@@ -1,5 +1,6 @@
 import React from "react";
-import Table from "./components/Table";
+import Table from "../tableComponent/Table";
+
 const MainPage = () => {
   return (
     <div className="main">

@@ -1,7 +1,8 @@
+// Table.jsx
 import React from "react";
-import TableRow from "../components/TableRow";
-import { wordsArray } from "./data";
-import styles from "../Table.module.css";
+import TableRow from "../tableRowComponent/TableRow";
+import { data as wordsArray } from "../data/data";
+import styles from "../tableComponent/Table.module.css";
 
 const Table = () => {
   return (
@@ -11,7 +12,6 @@ const Table = () => {
           <th>Слово</th>
           <th>Транскрипция</th>
           <th>Перевод</th>
-          <th>Картинка</th>
           <th>Действия</th>
         </tr>
       </thead>
