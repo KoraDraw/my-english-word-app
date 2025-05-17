@@ -1,11 +1,11 @@
 import "./App.css";
-// import WordPage from "./components/pages/WordPage";
+import WordPage from "./components/pages/WordPage";
 import MainPage from "./components/pages/MainPage";
 
 function App() {
   return (
     <div className="App">
-      {/* <WordPage /> */}
+      <WordPage />
       <MainPage />
     </div>
   );
