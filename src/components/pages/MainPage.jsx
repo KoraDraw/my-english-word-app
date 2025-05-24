@@ -1,5 +1,5 @@
 import React from "react";
-import Table from "../tableComponent/Table";
+import Table from "../Table/Table";
 
 const MainPage = () => {
   return (

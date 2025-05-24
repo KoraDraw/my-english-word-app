@@ -1,19 +1,16 @@
 import React from "react";
-import WordCard from "../wordCardComponent/WordCard";
-import { data } from "../data/data";
+import WordCard from "../WordCard/WordCard";
+import styles from "../pages/WordPage.module.css";
+import { data } from "../../data/data";
 
 function WordPage() {
-  const wordInfo = {
-    word: "Apple",
-    transcription: "[ˈæp.əl]",
-    translation: "Яблоко",
-  };
-
   return (
     <div className="App">
-      {data.map((wordInfo, index) => (
-        <WordCard key={index} info={wordInfo} />
-      ))}
+      <div className={styles["cards-container"]}>
+        {data.map((item, index) => (
+          <WordCard key={index} info={item} />
+        ))}
+      </div>
     </div>
   );
 }

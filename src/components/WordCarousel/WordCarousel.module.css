@@ -1,0 +1,55 @@
+.carouselContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wordCardContainer {
+  margin: 0 20px;
+}
+.fadeOut {
+  opacity: 0;
+  transform: scale(0.95);
+}
+.arrowButton {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  background-color: #ff66b2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.arrowButton:hover {
+  background-color: #ff3385;
+}
+
+.arrowButton:active {
+  background-color: #ff1a66;
+}
+
+.arrowButton:disabled {
+  background-color: #ffb3d9;
+  cursor: not-allowed;
+}
+
+.wordCardContainer {
+  display: inline-block;
+  margin: 0 20px;
+
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fadeOut {
+  opacity: 0;
+  transform: scale(0.95);
+}
+.carouselWrapper {
+  text-align: center;
+}
