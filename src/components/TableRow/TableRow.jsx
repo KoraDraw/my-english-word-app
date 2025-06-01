@@ -35,7 +35,7 @@ const TableRow = ({ word }) => {
             <input
               name={key}
               value={formData[key]}
-              onChange={handleInputChange}
+              onClick={handleInputChange}
             />
           ) : (
             word[key]

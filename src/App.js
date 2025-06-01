@@ -15,7 +15,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/words" element={<WordPage />} />
           <Route path="/carousel" element={<CarouselPage />} />
-          <Route path="/error" element={<Missing />} />
+          <Route path="*" element={<Missing />} />
         </Routes>
       </div>
     </Router>

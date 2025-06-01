@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import flowerLogo from "./flower.svg";
+import flowerLogo from "../../assets/images/flower.svg";
 import styles from "../NavBar/NavBar.module.css";
 
 function NavBar() {

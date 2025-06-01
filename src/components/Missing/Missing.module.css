@@ -1,0 +1,25 @@
+.missingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 10px;
+  text-align: center;
+}
+
+.missingContainer h1 {
+  font-size: 3rem;
+  color: #6a0dad;
+  margin-bottom: 20px;
+}
+
+.missingContainer h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.missingImage {
+  width: 350px;
+  max-width: 100%;
+}
