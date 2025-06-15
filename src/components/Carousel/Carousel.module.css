@@ -1,15 +1,36 @@
+.carouselWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .carouselContainer {
   display: flex;
   align-items: center;
-  justify-content: center;
 }
-.wordCardContainer {
+
+.itemContainer {
   margin: 0 20px;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
+
 .fadeOut {
   opacity: 0;
   transform: scale(0.95);
 }
+
+.arrowButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.paginationNumber {
+  font-size: 16px;
+  font-weight: bold;
+}
+
 .arrowButton {
   border-radius: 50%;
   width: 50px;
@@ -37,19 +58,4 @@
 .arrowButton:disabled {
   background-color: #ffb3d9;
   cursor: not-allowed;
-}
-
-.wordCardContainer {
-  display: inline-block;
-  margin: 0 20px;
-
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.fadeOut {
-  opacity: 0;
-  transform: scale(0.95);
-}
-.carouselWrapper {
-  text-align: center;
 }

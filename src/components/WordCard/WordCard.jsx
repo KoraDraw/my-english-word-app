@@ -1,14 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styles from "../WordCard/WordCard.module.css";
 import Button from "../Button/Button";
 
-const WordCard = ({ info }) => {
+const WordCard = ({ info, onWordShow }) => {
   const { word, transcription, translation } = info;
 
   const [showTranslation, setShowTranslation] = useState(false);
+  const [hasBeenCounted, setHasBeenCounted] = useState(false);
+
+  const buttonRef = useRef(null);
+
+  useEffect(() => {
+    if (buttonRef.current) {
+      buttonRef.current.focus();
+    }
+  }, []);
 
   const handleShowTranslation = () => {
     setShowTranslation(true);
+    if (!hasBeenCounted && onWordShow) {
+      onWordShow();
+      setHasBeenCounted(true);
+    }
   };
 
   return (
@@ -21,7 +34,11 @@ const WordCard = ({ info }) => {
       ) : null}
 
       {!showTranslation && (
-        <Button className={styles.button} onClick={handleShowTranslation}>
+        <Button
+          ref={buttonRef}
+          className={styles.button}
+          onClick={handleShowTranslation}
+        >
           Проверить
         </Button>
       )}

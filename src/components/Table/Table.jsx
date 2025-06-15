@@ -1,4 +1,3 @@
-// Table.jsx
 import React, { useState } from "react";
 import TableRow from "../TableRow/TableRow";
 import { data as wordsArray } from "../../data/data";
