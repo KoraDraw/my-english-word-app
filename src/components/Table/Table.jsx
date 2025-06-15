@@ -1,10 +1,21 @@
 // Table.jsx
-import React from "react";
+import React, { useState } from "react";
 import TableRow from "../TableRow/TableRow";
 import { data as wordsArray } from "../../data/data";
 import styles from "../Table/Table.module.css";
 
 const Table = () => {
+  const [stWord, stateStWord] = useState(wordsArray);
+  function updateWords(id, word) {
+    const copyStWord = [...stWord];
+    const resultArray = copyStWord.map((item) => {
+      if (item.id === id) {
+        return word;
+      }
+      return item;
+    });
+    stateStWord(resultArray);
+  }
   return (
     <table className={styles.table}>
       <thead>
@@ -16,8 +27,8 @@ const Table = () => {
         </tr>
       </thead>
       <tbody>
-        {wordsArray.map((word) => (
-          <TableRow key={word.id} word={word} />
+        {stWord.map((word) => (
+          <TableRow key={word.id} word={word} updateWords={updateWords} />
         ))}
       </tbody>
     </table>

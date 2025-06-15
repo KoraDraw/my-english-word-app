@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "../Button/Button";
 import styles from "../Table/Table.module.css";
 
-const TableRow = ({ word }) => {
+const TableRow = ({ word, updateWords }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({ ...word });
 
@@ -25,6 +25,14 @@ const TableRow = ({ word }) => {
 
   const handleSaveClick = () => {
     setIsEditing(false);
+    updateWords(word.id, {
+      id: word.id,
+      word: formData.word,
+      translation: formData.translation,
+      transcription: formData.transcription,
+      tags: word.tags,
+      tags_json: word.tags_json,
+    });
   };
 
   return (
