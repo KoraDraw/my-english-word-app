@@ -14,7 +14,7 @@ const WordCard = ({ info, onWordShow }) => {
     if (buttonRef.current) {
       buttonRef.current.focus();
     }
-  }, []);
+  }, [info]);
 
   const handleShowTranslation = () => {
     setShowTranslation(true);

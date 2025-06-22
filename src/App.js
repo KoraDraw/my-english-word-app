@@ -4,7 +4,6 @@ import NavBar from "./components/NavBar/NavBar";
 import WordPage from "./components/pages/WordPage";
 import MainPage from "./components/pages/MainPage";
 import CarouselPage from "./components/pages/CarouselPage";
-import Missing from "./components/Missing/Missing";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 
