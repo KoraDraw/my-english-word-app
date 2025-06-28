@@ -1,14 +1,13 @@
 import React from "react";
 import WordCard from "../WordCard/WordCard";
 import Carousel from "../Carousel/Carousel";
-import { data } from "../../data/data";
 
-const WordCarousel = () => (
+const WordCarousel = ({ data, initialIndex = 0 }) => (
   <div>
     <Carousel
       data={data}
       renderItem={(item, index) => <WordCard info={item} key={index} />}
-      initialIndex={0}
+      initialIndex={initialIndex}
     />
   </div>
 );

@@ -1,12 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { validateWord, sanitizeWord } from "../../utils/utils/validation";
+import { ERROR_MESSAGES } from "../../constants/errorMessages";
 import Button from "../Button/Button";
 import styles from "../Table/Table.module.css";
 
 const TableRow = ({ word, updateWords }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({ ...word });
-
+  const [hasEmptyFields, setHasEmptyFields] = useState(false);
   const initialValues = { ...word };
+
+  useEffect(() => {
+    const emptyFieldsExist = ["word", "transcription", "translation"].some(
+      (key) => formData[key].trim() === ""
+    );
+    setHasEmptyFields(emptyFieldsExist);
+  }, [formData]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -23,18 +32,60 @@ const TableRow = ({ word, updateWords }) => {
     setIsEditing(false);
   };
 
+  // const handleSaveClick = () => {
+  //   if (
+  //     ["word", "transcription", "translation"].some(
+  //       (key) => formData[key].trim() === ""
+  //     )
+  //   ) {
+  //     alert("Ошибка: Пожалуйста, заполните все поля перед сохранением.");
+  //     return;
+  //   }
+
+  //   console.log("Сохранённые параметры:", {
+  //     id: word.id,
+  //     word: formData.word,
+  //     transcription: formData.transcription,
+  //     translation: formData.translation,
+  //     tags: word.tags,
+  //     tags_json: word.tags_json,
+  //   });
+
+  //   updateWords(word.id, {
+  //     id: word.id,
+  //     word: formData.word,
+  //     transcription: formData.transcription,
+  //     translation: formData.translation,
+  //     tags: word.tags,
+  //     tags_json: word.tags_json,
+  //   });
+
+  //   setIsEditing(false);
+  // };
+
   const handleSaveClick = () => {
-    setIsEditing(false);
+    const validationResult = validateWord(formData);
+    if (!validationResult.isValid) {
+      alert(`Ошибка: ${validationResult.errors.join(", ")}`);
+      return;
+    }
+
+    // например, если хотите использовать сообщение из констант:
+    if (validationResult.errors.includes("some error")) {
+      alert(`Ошибка: ${ERROR_MESSAGES.REQUIRED_FIELDS}`);
+      return;
+    }
+
+    const sanitizedData = sanitizeWord(formData);
     updateWords(word.id, {
+      ...sanitizedData,
       id: word.id,
-      word: formData.word,
-      translation: formData.translation,
-      transcription: formData.transcription,
       tags: word.tags,
       tags_json: word.tags_json,
     });
-  };
 
+    setIsEditing(false);
+  };
   return (
     <tr>
       {["word", "transcription", "translation"].map((key) => (
@@ -44,6 +95,9 @@ const TableRow = ({ word, updateWords }) => {
               name={key}
               value={formData[key]}
               onChange={handleInputChange}
+              style={{
+                borderColor: formData[key].trim() === "" ? "red" : undefined,
+              }}
             />
           ) : (
             word[key]
@@ -54,7 +108,12 @@ const TableRow = ({ word, updateWords }) => {
       <td className={styles.actionButton}>
         {isEditing ? (
           <>
-            <Button text="Сохранить" onClick={handleSaveClick} type="save" />
+            <Button
+              text="Сохранить"
+              onClick={handleSaveClick}
+              type="save"
+              disabled={hasEmptyFields}
+            />
             <Button text="Отмена" onClick={handleCancelClick} type="cancel" />
           </>
         ) : (

@@ -52,7 +52,7 @@ export const data = [
     word: "kiwi",
     translation: "киви",
     transcription: "/ˈkiː.wi/",
-    tags: ["fruit', 'food"],
+    tags: ["fruit", "food"],
     tags_json: JSON.stringify(["fruit", "food"]),
   },
   {
