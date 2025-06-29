@@ -6,6 +6,7 @@ import MainPage from "./components/pages/MainPage";
 import CarouselPage from "./components/pages/CarouselPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
+import { WordsProvider } from "./contexts/WordsContext";
 
 const NotFoundPage = lazy(() => import("./components/Missing/Missing"));
 
@@ -18,21 +19,23 @@ const ROUTES = {
 
 function App() {
   return (
-    <Router>
-      <ErrorBoundary>
-        <div className="App">
-          <NavBar />
-          <Suspense fallback={<div>Loading...</div>}>
-            <Routes>
-              <Route path={ROUTES.MAINPAGE} element={<MainPage />} />
-              <Route path={ROUTES.WORDPAGE} element={<WordPage />} />
-              <Route path={ROUTES.CAROUSEL} element={<CarouselPage />} />
-              <Route path={ROUTES.MISSING} element={<NotFoundPage />} />
-            </Routes>
-          </Suspense>
-        </div>
-      </ErrorBoundary>
-    </Router>
+    <WordsProvider>
+      <Router>
+        <ErrorBoundary>
+          <div className="App">
+            <NavBar />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Routes>
+                <Route path={ROUTES.MAINPAGE} element={<MainPage />} />
+                <Route path={ROUTES.WORDPAGE} element={<WordPage />} />
+                <Route path={ROUTES.CAROUSEL} element={<CarouselPage />} />
+                <Route path={ROUTES.MISSING} element={<NotFoundPage />} />
+              </Routes>
+            </Suspense>
+          </div>
+        </ErrorBoundary>
+      </Router>
+    </WordsProvider>
   );
 }
 
